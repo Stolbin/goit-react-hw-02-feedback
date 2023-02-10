@@ -20,6 +20,7 @@ export const Button = styled.button`
   font-size: 20px;
   font-weight: 600;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  transition: scale 650ms ease;
   &:hover {
     scale: 1.05;
     transition: scale 650ms ease;
