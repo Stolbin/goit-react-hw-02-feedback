@@ -18,4 +18,5 @@ export const CountListItemTitle = styled.p`
 export const CountListItemValue = styled.p`
   font-size: 20px;
   font-weight: 500;
+  margin-right: 10px;
 `;
