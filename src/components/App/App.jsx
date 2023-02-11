@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import SectionTitle from 'components/SectionTitle';
 import ButtonList from 'components/ButtonList';
 import CountList from 'components/CountList';
-import data from 'components/ButtonList/data.json';
-import { Container, TitleText } from './App.styled';
+import { Container, NotificationMessage } from './App.styled';
 
 class App extends Component {
   state = {
@@ -11,14 +11,47 @@ class App extends Component {
     bad: 0,
   };
 
-  // onClick
+  elements = () => Object.keys(this.state);
+
+  handleClick = event => {
+    const { value } = event.target;
+    this.setState(prevState => ({
+      [value]: prevState[value] + 1,
+    }));
+  };
+
+  countTotalFeedback = () =>
+    Object.values(this.state).reduce((total, value) => total + value);
+
+  countPercentagePositiveFeedback = () =>
+    Math.round((this.state.good / this.countTotalFeedback()) * 100);
+
   render() {
+    const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const positive = this.countPercentagePositiveFeedback();
     return (
       <Container>
-        <TitleText>Please leave yor feedback</TitleText>
-        <ButtonList elemets={data} />
-        <TitleText>Statistic</TitleText>
-        <CountList />
+        <SectionTitle title="Please leave yor feedback">
+          <ButtonList
+            elemets={this.elements()}
+            onLeaveFeedback={this.handleClick}
+          />
+        </SectionTitle>
+
+        <SectionTitle title="Statistics">
+          {good || neutral || bad ? (
+            <CountList
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positive}
+            />
+          ) : (
+            <NotificationMessage>There is no feedback</NotificationMessage>
+          )}
+        </SectionTitle>
       </Container>
     );
   }

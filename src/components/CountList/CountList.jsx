@@ -1,23 +1,41 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {
   CountListBox,
   CountListItem,
-  CountListItemText,
+  CountListItemTitle,
+  CountListItemValue,
 } from './CountList.styled';
 
-const CountList = () => (
+const CountList = ({ good, neutral, bad, total, positivePercentage }) => (
   <CountListBox>
     <CountListItem>
-      <CountListItemText>Good:</CountListItemText>
+      <CountListItemTitle>Good:</CountListItemTitle>
+      <CountListItemValue>{good}</CountListItemValue>
     </CountListItem>
     <CountListItem>
-      <CountListItemText>Neutral:</CountListItemText>
+      <CountListItemTitle>Neutral:</CountListItemTitle>
+      <CountListItemValue>{neutral}</CountListItemValue>
     </CountListItem>
     <CountListItem>
-      <CountListItemText>Bad:</CountListItemText>
+      <CountListItemTitle>Bad:</CountListItemTitle>
+      <CountListItemValue>{bad}</CountListItemValue>
+    </CountListItem>
+    <CountListItem>
+      <CountListItemTitle>Total:</CountListItemTitle>
+      <CountListItemValue>{total}</CountListItemValue>
+    </CountListItem>
+    <CountListItem>
+      <CountListItemTitle>Positive feedback:</CountListItemTitle>
+      <CountListItemValue>{positivePercentage}%</CountListItemValue>
     </CountListItem>
   </CountListBox>
 );
+
+CountList.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  total: PropTypes.number,
+};
 
 export default CountList;

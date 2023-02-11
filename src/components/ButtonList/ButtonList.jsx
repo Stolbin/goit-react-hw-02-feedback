@@ -1,21 +1,19 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { Section, ListItem, Button } from './ButtonList.styled';
 
-const ButtonList = ({ elemets }) => (
+const ButtonList = ({ elemets, onLeaveFeedback }) => (
   <Section>
     {elemets.map(element => (
-      <ListItem key={element.id}>
-        <Button
-          onClick={() => {
-            console.log('Clik');
-          }}
-        >
-          {element.name}
+      <ListItem key={element}>
+        <Button value={element} type="button" onClick={onLeaveFeedback}>
+          {element}
         </Button>
       </ListItem>
     ))}
   </Section>
 );
 
+ButtonList.propTypes = {
+  options: PropTypes.array,
+};
 export default ButtonList;
