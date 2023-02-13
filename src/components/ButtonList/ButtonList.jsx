@@ -14,6 +14,6 @@ const ButtonList = ({ elemets, onLeaveFeedback }) => (
 );
 
 ButtonList.propTypes = {
-  options: PropTypes.array,
+  elemets: PropTypes.array,
 };
 export default ButtonList;
