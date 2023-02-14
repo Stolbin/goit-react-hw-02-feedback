@@ -11,8 +11,6 @@ class App extends Component {
     bad: 0,
   };
 
-  elements = () => Object.keys(this.state);
-
   handleClick = event => {
     const { value } = event.target;
     this.setState(prevState => ({
@@ -34,13 +32,13 @@ class App extends Component {
       <Container>
         <SectionTitle title="Please leave yor feedback">
           <ButtonList
-            elemets={this.elements()}
+            elemets={Object.keys(this.state)}
             onLeaveFeedback={this.handleClick}
           />
         </SectionTitle>
 
         <SectionTitle title="Statistics">
-          {good || neutral || bad ? (
+          {total ? (
             <CountList
               good={good}
               neutral={neutral}
