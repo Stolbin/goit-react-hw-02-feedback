@@ -9,6 +9,9 @@ export const TitleSection = styled.h2`
   margin-top: 10px;
   text-align: center;
     @media (min-width: 768px) {
+  font-size: 36px;
+  }
+    @media (min-width: 1200px) {
   font-size: 38px;
   }
   }
